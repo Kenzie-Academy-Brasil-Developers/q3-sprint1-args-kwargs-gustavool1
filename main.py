@@ -14,12 +14,10 @@ def word_concatenator(*args):
     return " ".join(args).rstrip()
 
 def inverted_word_factory(*args):
-    res = []
-    for word in args:
-        res.append(word[::-1])
-    reversedRes = list(reversed(list(res)))
-    return word_concatenator(" ".join(reversedRes))
+    res = list(reversed([word[::-1] for word in args]))
+    return word_concatenator(" ".join(res))
 
+inverted_word_factory("eae", "amigão", "belezinha?")
 def dictionary_separator(**kwargs):
     keys = list(kwargs.keys())
     values = list(kwargs.values())
@@ -40,5 +38,3 @@ def purchase_logger(**kwargs):
 def world_cup_logger(country, *year_list):
     year_list = sorted(year_list)
     return f"{country} - {', '.join(str(n) for n in year_list[:-1:])} e {''.join(str(n) for n in year_list[len(year_list)-1::])}"
-
-
